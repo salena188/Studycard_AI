@@ -30,3 +30,9 @@ def login(request):
     if user:
         return Response({"message": "Login success"})
     return Response({"error": "Invalid credentials"}, status=400)
+
+
+
+@api_view(['POST'])
+def logout(request):
+    return Response({"message": "Logged out"})

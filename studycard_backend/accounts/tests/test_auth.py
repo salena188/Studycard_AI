@@ -55,3 +55,28 @@ def test_user_login():
     response = client.post(url, data)
 
     assert response.status_code == 200
+
+#logout test
+@pytest.mark.django_db
+def test_logout():
+    client = APIClient()
+
+    url = reverse("logout")
+    response = client.post(url)
+
+    assert response.status_code == 200
+
+#dummy
+@pytest.mark.django_db
+def test_multiple_user_registration():
+    client = APIClient()
+    url = reverse("register")
+
+    for i in range(5):
+        data = {
+            "username": f"user{i}",
+            "password": "testpass123"
+        }
+
+        response = client.post(url, data)
+        assert response.status_code == 201
